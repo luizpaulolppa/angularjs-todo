@@ -1,0 +1,101 @@
+<html ng-app="app">
+
+<head>
+    <title>To-Do</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+
+    <!-- INICIO - Bootstrap CSS -->
+    <link rel="stylesheet" href="./libs/bootstrap/css/bootstrap.min.css" />
+    <!-- FIM - Bootstrap CSS -->
+
+    <!-- INICIO - Bootstrap JS -->
+    <script src="./libs/bootstrap/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="./libs/bootstrap/js/popper.min.js"></script>
+    <script src="./libs/bootstrap/js/bootstrap.min.js"></script>
+    <!-- FIM - Bootstrap JS -->
+
+    <script src="./libs/angular/angular.min.js"></script>
+
+    <!-- INICIO - APP -->
+    <script src="./config/app.js"></script>
+    <!-- FIM - APP -->
+
+    <!-- INICIO - SERVICES -->
+    <!-- FIM - SERVICES -->
+
+    <!-- INICIO - CONTROLLERS -->
+    <script src="./controllers/homeController.js"></script>
+    <!-- FIM - CONTROLLERS -->
+
+    <style>
+        .card-center {
+            width: 600px;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card-title {
+            text-align: center;
+        }
+
+        .table {
+            margin-top: 20px;
+        }
+
+        .custom-control-input:valid:checked~.custom-control-label::before {
+            background-color: #34ce57;
+        }
+
+        .linha-concluida {
+            background-color: #b5fbb3;
+        }
+
+        .maozinha {
+            cursor: pointer;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="card-center card" ng-controller="homeController">
+        <div class="card-body">
+            <h5 ng-click="alterarNome()" class="card-title maozinha">{{ nome }}</h5>
+
+            <button type="button" class="btn btn-primary btn-lg btn-block">Nova To-Do</button>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">To-Do</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="todo in todos">
+                        <th scope="row" ng-class="{'linha-concluida' : todo.concluida}">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1-{{$index}}" ng-model="todo.concluida">
+                                <label class="custom-control-label" for="customCheck1-{{$index}}"></label>
+                            </div>
+                        </th>
+                        <td ng-class="{'linha-concluida' : todo.concluida}">{{ todo.descricao }}</td>
+                        <td ng-class="{'linha-concluida' : todo.concluida}">{{ todo.data }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
