@@ -11,7 +11,7 @@
 
         var init = function () {
             getNome();
-            $scope.todos = todosService.getTodos();
+            getTodos();
         }
         init();
 
@@ -21,6 +21,20 @@
 
         $scope.novaTodo = function() {
             $location.path('/nova-todo');
+        }
+
+        $scope.excluirTodo = function(todo) {
+            todosService.deleteTodo(todo.id);
+            getTodos();
+        }
+
+        $scope.check = function(todo) {
+            todosService.checkTodo(todo.id);
+            getTodos();
+        }
+
+        function getTodos() {
+            $scope.todos = todosService.getTodos();
         }
 
         function getNome() {
