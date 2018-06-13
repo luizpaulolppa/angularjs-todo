@@ -1,0 +1,38 @@
+<div class="card-center card">
+    <div class="card-body">
+        <h5 ng-click="alterarNome()" class="card-title maozinha" title="Alterar nome do usuário.">{{ nome }}</h5>
+        <br>
+        <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="novaTodo()" title="Crie uma nova To-Do.">Novo To-Do</button>
+
+        <br>
+
+        <table class="table" ng-if="todos && todos.length">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">To-Do</th>
+                    <th>Data evento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="todo in todos | orderBy: 'concluida'">
+                    <th scope="row" ng-class="{'linha-concluida' : todo.concluida}">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1-{{$index}}" ng-model="todo.concluida">
+                            <label class="custom-control-label" for="customCheck1-{{$index}}"></label>
+                        </div>
+                    </th>
+                    <td ng-class="{'linha-concluida' : todo.concluida}">{{ todo.descricao }}</td>
+                    <td ng-class="{'linha-concluida' : todo.concluida}">{{ todo.data }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="card" ng-if="!todos || !todos.length">
+            <div class="card-body" style="text-align: center">
+                Nenhuma To-Do adicionada.
+            </div>
+        </div>
+
+    </div>
+</div>

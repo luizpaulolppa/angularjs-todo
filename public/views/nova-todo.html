@@ -1,0 +1,12 @@
+<div class="card-center card">
+    <div class="card-body">
+        <h5 class="card-title">Novo To-Do</h5>
+        <br>
+        <textarea class="form-control" placeholder="Descrição" ng-model="descricao"></textarea>
+        <br>
+        <input class="form-control" type="date" placeholder="Date do evento" ng-model="dataEvento">
+        <br>
+        <button type="button" class="btn btn-success btn-lg btn-block" ng-click="salvar()" ng-disabled="!descricao || !dataEvento">Salvar</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="voltar()">Voltar</button>
+    </div>
+</div>
