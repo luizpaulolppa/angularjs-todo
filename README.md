@@ -1,3 +1,3 @@
-# angularjs-todo
+# AngularJS Todo
 
 Simple PWA todos.
